@@ -40,3 +40,10 @@ export interface DoctorDetails {
   specializations: string[];
   brief: string;
 }
+
+export interface TimeSlot {
+  startTime: string; // ISO string
+  endTime: string; // ISO string
+  startTimeUTC: Date;
+  endTimeUTC: Date;
+}
