@@ -1,7 +1,7 @@
 "use server";
 import { ServerActionResponse } from "@/types";
 import { prisma } from "@/db/prisma";
-import { AppointmentStatus } from "@prisma/client";
+import { AppointmentStatus } from "@/generated/client";
 import { getAppTimeZone } from "@/lib/config";
 import { toZonedTime, format } from "date-fns-tz";
 

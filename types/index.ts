@@ -1,11 +1,13 @@
-import { Department, BannerImage } from "@prisma/client";
+import { Department, BannerImage } from "@/generated/client";
 
+export type FieldErrors = Record<string, string[] | undefined>;
 export interface ServerActionResponse<T = unknown> {
   success: boolean;
   message?: string;
   data?: T;
   error?: string;
   errorType?: string;
+  fieldErrors?: FieldErrors;
 }
 export type DepartmentData = Department;
 

@@ -3,8 +3,10 @@ import { Plus } from "lucide-react";
 import { APP_NAME } from "@/lib/constants/index";
 import MenuClient from "../molecules/menu-client";
 import SigninOrAvatar from "../molecules/signin-avatar";
+import { auth } from "@/auth";
 
-const Header = () => {
+const Header = async () => {
+  const session = await auth();
   return (
     <header className="bg-background-2 w-full sticky top-0 z-50">
       <div className="max-w-360 h-16.25 mx-auto px-6 md:px-8 flex items-center justify-between">
@@ -26,7 +28,7 @@ const Header = () => {
         </div>
         {/* Right Section: Navigation Links */}
         <div>
-          <MenuClient desktopAvatar={<SigninOrAvatar />} />
+          <MenuClient desktopAvatar={<SigninOrAvatar />} session={session} />
         </div>
       </div>
     </header>

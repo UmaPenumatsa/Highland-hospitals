@@ -9,16 +9,21 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/molecules/theme-toggle";
-import { EllipsisVertical, MoreVertical, Sun } from "lucide-react";
+import { EllipsisVertical } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import MobileUserSignOrAvatar from "@/components/molecules/mobile-user-siginoravatar";
+import { Session } from "next-auth";
 
 interface MenuClientProps {
   desktopAvatar: React.ReactNode;
+  session: Session | null;
 }
 
-export default function MenuClient({ desktopAvatar }: MenuClientProps) {
+export default function MenuClient({
+  desktopAvatar,
+  session,
+}: MenuClientProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const closeMobileMenu = () => {
@@ -91,6 +96,7 @@ export default function MenuClient({ desktopAvatar }: MenuClientProps) {
             <SheetFooter className="w-full">
               <MobileUserSignOrAvatar
                 onMobileActionComplete={closeMobileMenu}
+                session={session}
               />
             </SheetFooter>
           </SheetContent>

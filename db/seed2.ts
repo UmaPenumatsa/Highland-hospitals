@@ -1,10 +1,10 @@
 import "dotenv/config";
-import { AppointmentStatus, PatientType } from "@prisma/client";
+import { AppointmentStatus, PatientType } from "@/generated/client";
 import {
   doctorProfiles,
   appointments,
-  patient1Id,
-  doctor1Id,
+  // patient1Id,
+  // doctor1Id,
 } from "./dummydata2";
 import { prisma } from "@/db/prisma";
 
