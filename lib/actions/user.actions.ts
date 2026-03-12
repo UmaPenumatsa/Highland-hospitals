@@ -74,17 +74,6 @@ export async function signInWithCredentials(
   }
 }
 
-export async function signOutUser(): Promise<void> {
-  try {
-    await signOut({ redirectTo: "/", redirect: true });
-  } catch (error) {
-    if (isRedirectError(error)) {
-      throw error;
-    }
-    throw new Error("Sign out failed on the server");
-  }
-}
-
 export async function signUp(
   prevState: unknown,
   formData: FormData,
@@ -182,5 +171,16 @@ export async function signUp(
       message: "Sign up did not suceed. Please try again.",
       errorType: "SERVER_ERROR",
     };
+  }
+}
+
+export async function signOutUser(): Promise<void> {
+  try {
+    await signOut({ redirectTo: "/", redirect: true });
+  } catch (error) {
+    if (isRedirectError(error)) {
+      throw error;
+    }
+    throw new Error("Sign out failed on the server");
   }
 }
