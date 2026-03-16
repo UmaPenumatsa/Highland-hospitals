@@ -1,6 +1,7 @@
 import NextAuth, { NextAuthConfig } from "next-auth";
 import { prisma } from "@/db/prisma";
 import { PrismaAdapter } from "@auth/prisma-adapter";
+import { type Adapter } from "next-auth/adapters";
 import { authConfig } from "./auth.config";
 import Credentials from "next-auth/providers/credentials";
 import { compareSync } from "bcrypt-ts-edge";
@@ -15,7 +16,11 @@ export const config: NextAuthConfig = {
     strategy: "jwt", // Use JSON Web Tokens for session management
     maxAge: 30 * 24 * 60 * 60, // Set session to expire in 30 days
   },
-  adapter: PrismaAdapter(prisma),
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  adapter: PrismaAdapter(prisma) as any as Adapter,
   providers: [
     Credentials({
       credentials: {
